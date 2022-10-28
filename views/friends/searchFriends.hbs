@@ -1,0 +1,19 @@
+<form action="/findFriends" method="POST">
+  <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+  <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+{{#if hasUsers}}
+<div class="card" style="width: 18rem;">
+  <img src="{{users.imagePath}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"> {{users.name}} {{users.lastName}}</h5>
+    <form action="/solicitud" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+      <input type="hidden" name="userIdRecept" value="{{users.id}}" />
+      <button type="submit" class="btn btn-primary" id="send">Enviar solicitud</button>
+    </form>
+  </div>
+</div>
+{{/if}}

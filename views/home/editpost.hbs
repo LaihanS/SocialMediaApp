@@ -1,0 +1,22 @@
+<main>
+    <form action="/postedit" method="post" enctype="multipart/form-data">
+     <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+    <input type="hidden" name="postID" value="{{post.id}}" />
+<div class="card">
+  <div class="card-header">
+    Edit post
+  </div>
+  <div class="card-body">
+   <textarea id="body" class="form-control" name="textoedit" >{{post.text}}</textarea>
+  </div>
+
+   <div class="input-field-text">
+          <input type="file" class="form-control" name="imagePath"/>
+   </div>
+        <div class="chip">
+  <img src="{{post.imagePath}}" alt="Person" width="96" height="96">
+     </div>
+<button type="submit" class="btn btn-primary">Editar</button>
+</div>
+</form>
+</main>

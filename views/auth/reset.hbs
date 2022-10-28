@@ -1,0 +1,22 @@
+<main class="form-signin">
+  <form action="/reset" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+    <h1 class="h3 mb-3 fw-normal">Reset password</h1>
+
+    <div class="form-floating">
+      <input
+        type="text"
+        class="form-control"
+        name="user"
+        id="floatingInput"
+        placeholder="User"
+        required
+      />
+      <label for="floatingInput">User</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary margin-top-2" type="submit">Reset</button>
+    <a href="/" class="w-100 btn btn-lg btn-warning margin-top-2">Atras</a>
+
+  </form>
+</main>

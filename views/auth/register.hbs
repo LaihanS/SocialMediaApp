@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-primary text-light">
+        Crear usuario
+      </div>
+      <div class="card-body">
+        <form  enctype="multipart/form-data" action="/register" method="POST">
+       33
+          <div class="mb-3">
+            <label for="name-input" class="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="name-input"
+              name="name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="lastname-input" class="form-label">
+              LastName
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastname-input"
+              name="lastname"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="phone-input" class="form-label">
+              Phone
+            </label>
+            <input
+              type="number"
+              class="form-control"
+              id="phone-input"
+              name="phone"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">
+              Profile Image 
+            </label>
+            <input 
+              class="form-control" 
+              name="imagePath" 
+              type="file" 
+              id="formFile"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email-input" class="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="email-input"
+              name="email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="user-input" class="form-label">
+              User
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="user-input"
+              name="user"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password-input" class="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              class="form-control"
+              id="password-input"
+              name="password"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="confirm-password-input" class="form-label">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              class="form-control"
+              id="confirm-password-input"
+              name="confirmPassword"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Create
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>

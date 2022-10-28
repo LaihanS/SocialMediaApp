@@ -1,0 +1,29 @@
+<div class="row py-lg-5">
+{{#each usuario as |usu|}}
+
+    <div class="card">
+        <div class="card-header">
+        <div class="chip">
+        <img src="{{usu.user.dataValues.imagePath}}" alt="Person" width="96" height="96">
+        {{usu.user.dataValues.name}} 
+        {{usu.user.dataValues.lastname}} 
+        </div>
+        </div>
+        <div class="card-body">
+        <form action="/aceptarFriend" method="post">
+        <input type="hidden" name="_csrf" value="{{../csrfToken}}" />
+        <input type="hidden" name="userIdRecept2" value="{{usu.user.dataValues.id}}" />
+        <input type="hidden" name="idVaina" value="{{usu.id}}" />
+        <button type="submit" class="btn btn-primary" id="send">Aceptar</button>
+        </form>
+
+        <form action="/eliminarNotifi" method="post">
+        <input type="hidden" name="_csrf" value="{{../csrfToken}}" />
+        <input type="hidden" name="idDato" value="{{usu.id}}" />
+        <button type="submit" class="btn btn-primary float-end" id="send">Eliminar</button>
+        </form>
+        </div>
+    
+    
+    {{/each}}
+    </div>

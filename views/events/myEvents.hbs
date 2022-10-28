@@ -1,0 +1,21 @@
+<main>
+{{#each events as |even|}}
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <div class="card" style="width: 30rem;">
+            <h1 class="card-title">{{even.name}}</h1>
+            <div class="card-body">
+              <p class="card-text">{{even.place}}</p>
+              <p class="card-text">{{even.answer}}</p>
+              <p class="card-text">{{even.eventDate}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  {{/each}}
+
+</main>
+    

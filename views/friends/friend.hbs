@@ -1,0 +1,91 @@
+<main>
+  
+      <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Listado de Amigos</h1>
+        <p>
+          <a href="/findFriend" class="btn btn-primary my-2">Crear Nuevo Amigo</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+<div class="row">
+  <div class="col s12 m4 l3">
+    {{#each amiko as |amig|}}
+    <div class="chip">
+      <img src="{{amig.user.dataValues.imagePath}}" alt="Person" width="96" height="96">
+      {{amig.user.dataValues.username}} {{amig.user.dataValues.name}} {{amig.user.dataValues.lastname}}
+      <form action="/eliminarAmigo" method="post">
+        <input type="hidden" name="_csrf" value="{{../csrfToken}}" />
+        <input type="hidden" name="idAmigo" value="{{amig.id}}" />
+        <button type="submit" class="btn btn-danger float-end" id="send">Eliminar</button>
+        </form>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+   {{#each friends as |publicacion|}}
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <div class="card" style="width: 30rem;">
+            <div class="chip">
+              <img src="{{publicacion.user.dataValues.imagePath}}" alt="Person" width="96" height="96">
+              {{publicacion.user.dataValues.name}} {{publicacion.user.dataValues.lastname}}
+            </div>
+             {{#if (equalValue publicacion.imagePath "/undefined")}}
+            <h2>No tiene imagen</h2>
+            {{else}}
+            <img src="{{publicacion.imagePath}}" class="card-img-top" alt="...">
+            {{/if}}
+            <div class="card-body">
+              <p class="card-text">{{publicacion.createdAt}}</p>
+              <p class="card-text">{{publicacion.text}}</p>
+
+              <div class="accordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="panelsStayOpen-heading{{@index}}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#panelsStayOpen-collapse{{@index}}" aria-expanded="false"
+                      aria-controls="panelsStayOpen-collapse{{@index}}">
+                      Comments
+                    </button>
+                  </h2>
+                  <div id="panelsStayOpen-collapse{{@index}}" class="accordion-collapse collapse"
+                    aria-labelledby="panelsStayOpen-heading{{@index}}">
+                    <div class="accordion-body">
+
+                       <form action="/comentar" method="post" enctype="multipart/form-data">
+                          <input type="hidden" name="_csrf" value="{{../csrfToken}}" />
+                          <input type="hidden" name="publicacionID" value="{{publicacion.id}}" />
+                          <input type="hidden" name="usuarioID" value="{{../Usuario.id}}" />
+                          <input type="hidden" name="usuarioImage" value="{{../Usuario.imagePath}}" />
+                            <textarea id="body" class="form-control" name="comentario"
+                           placeholder="Comente el diparate que se le ocurra, {{../Usuario.name}}"></textarea>
+                           </div>
+                            <button type="submit" class="btn btn-warning" id="btnEliminarBook">Comentar</button>
+                          </form>
+
+                          {{#each publicacion.comentarios as |comment|}}
+                           <div class="row py-lg-5">
+                           <div class="chip">
+                           <img src="{{comment.dataValues.imagePath}}" alt="Person" width="96" height="96">
+                            {{comment.dataValues.text}}
+                        </div>
+                          {{/each}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  {{/each}}
+  
+</main>

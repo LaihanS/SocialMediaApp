@@ -1,0 +1,21 @@
+<form action="/findAmigo" method="POST">
+  <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+ <input type="hidden" name="eventoId" value="{{eventoId}}" />
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+{{#if hasUsers}}
+<div class="card" style="width: 18rem;">
+  <img src="{{users.imagePath}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"> {{users.name}} {{users.lastName}}</h5>
+    <form action="/solicitudPost" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+      <input type="hidden" name="userIdRecept" value="{{users.id}}" />
+     <input type="hidden" name="eventoId" value="{{eventoId}}" />
+      <button type="submit" class="btn btn-primary" id="send">Enviar solicitud </button>
+    </form>
+  </div>
+</div>
+{{/if}}
